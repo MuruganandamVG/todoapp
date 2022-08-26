@@ -3,7 +3,7 @@ from .models import Todo
 
 # Create your views here.
 def index(request):
-    todo = Todo.objects.all()
+    todolist = Todo.objects.all()
     if request.method == 'POST':
         new_todo = Todo(
             title = request.POST['title']
@@ -11,7 +11,7 @@ def index(request):
         new_todo.save()
         return redirect('/')
 
-    return render(request, 'index.html', {'todos': todo})
+    return render(request, 'index.html', {'todos': todolist})
 
 def delete(request, pk):
     todo = Todo.objects.get(id=pk)
